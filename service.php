@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maxwheels</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bo">
 <header>
@@ -14,7 +14,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="voiture.php" class="active">AllCars</a></li>
                 <li><a href="service.php" class="active">Service</a></li>
-                <li><a href="reservation.php" class="active">Réservation</a></li>
+                <li><a href="reservation.php<?php if(!isset($_SESSION['user_id'])) echo '?redirect=reservation.php'; ?>" class="active">Réservation</a></li>
             </ul>
             <div class="auth-buttons">
                 <a href="login.php" class="SignIN">Login</a>
@@ -81,25 +81,18 @@
             <p><a href="mailto:Auto Rush@Contact.Com" style="color: rgb(177, 39, 39);">Auto Rush@Contact.Com</a></p>
         </div>
         <div class="footer-section map">
-            <img src="Capture.png" alt="Map" style="width: 250px; height: 200px;">
+            <img src="images/Capture.png" alt="Map" style="width: 250px; height: 200px;">
         </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; Auto Rush | Designed by <span>Jihane & Asmae & Hajar</span></p>
         <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-            <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="#"><img src="images/youtube-icon.png" alt="YouTube"></a>
         </div>
         <script>
-          /*let btn0=document.getElementById('0');
-          let btn1=document.getElementById('1');
-          let btn2=document.getElementById('2');
-          let btn3=document.getElementById('3');
-          let btn4=document.getElementById('4');
-          let btn5=document.getElementById('5');
-          btn0.addEventListener('click')*/
         </script>
     </div>
 </footer>

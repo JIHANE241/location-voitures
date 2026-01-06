@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("26310810lpw-26311573-mega-une-jpg_10206707.jpg");
+    background-image: url('../images/26310810lpw-26311573-mega-une-jpg_10206707.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -285,7 +285,7 @@ nav ul li a.active {
   }
   
   .background {
-    background: url('campbell-3ZUsNJhi_Ik-unsplash.jpg') no-repeat center center;
+    background: url('../images/campbell-3ZUsNJhi_Ik-unsplash.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -360,7 +360,7 @@ nav ul li a.active {
   
   .dy {
     font-family: Arial, sans-serif;
-    background-image: url("image.png");
+    background-image: url("../images/image.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

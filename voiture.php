@@ -12,7 +12,7 @@ $result = $conn->query($query); // Exécution de la requête
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MetroRide</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="bo">
 <header>
@@ -22,7 +22,7 @@ $result = $conn->query($query); // Exécution de la requête
             <li><a href="index.php" class="active">Home</a></li>
             <li><a href="voiture.php" class="active">AllCars</a></li>
             <li><a href="service.php" class="active">Service</a></li>
-            <li><a href="reservation.php" class="active">Réservation</a></li>
+            <li><a href="reservation.php<?php if(!isset($_SESSION['user_id'])) echo '?redirect=reservation.php'; ?>" class="active">Réservation</a></li>
         </ul>
         <div class="auth-buttons">
             <a href="login.php" class="SignIN">Login</a>
@@ -45,7 +45,7 @@ $result = $conn->query($query); // Exécution de la requête
 
         <!-- Voitures statiques (qui étaient déjà dans le code HTML d'origine) -->
         <div class="card">
-            <img src="téléchargement.jpeg" alt="Mercedes-AMG GT R" />
+            <img src="images/téléchargement.jpeg" alt="Mercedes-AMG GT R" />
             <div class="info">
                 <p><strong>$80.00</strong>/Day <span>📍 Rabat</span></p>
                 <h3>Mercedes-AMG GT R</h3>
@@ -53,7 +53,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="images.jpeg" alt="BMW 428i F32" />
+            <img src="images/images.jpeg" alt="BMW 428i F32" />
             <div class="info">
                 <p><strong>$60.00</strong>/Day <span>📍 Tanger</span></p>
                 <h3>BMW 428i – F32</h3>
@@ -61,7 +61,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="téléchargement (1).jpeg" alt="Toyota 86 Coupe" />
+            <img src="images/téléchargement (1).jpeg" alt="Toyota 86 Coupe" />
             <div class="info">
                 <p><strong>$40.00</strong>/Day <span>📍 Casa</span></p>
                 <h3>Toyota 86 – Coupe</h3>
@@ -69,7 +69,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="img1.jpg" alt="Mercedes-AMG GT R" />
+            <img src="images/img1.jpg" alt="Mercedes-AMG GT R" />
             <div class="info">
                 <p><strong>1000 DH </strong>/Day <span>📍 Marrakech</span></p>
                 <h3>Bugatti Chiron</h3>
@@ -77,7 +77,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="img3.jpg" alt="BMW 428i F32" />
+            <img src="images/img3.jpg" alt="BMW 428i F32" />
             <div class="info">
                 <p><strong>800 DH</strong>/Day <span>📍 Casa</span></p>
                 <h3>Mercedes-AMG GT R</h3>
@@ -85,7 +85,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="img4.jpg" alt="Toyota 86 Coupe" />
+            <img src="images/img4.jpg" alt="Toyota 86 Coupe" />
             <div class="info">
                 <p><strong>400 DH </strong>/Day <span>📍 Rabat</span></p>
                 <h3>Audi Q8</h3>
@@ -93,7 +93,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="image9.jpg" alt="Toyota 86 Coupe" />
+            <img src="images/image9.jpg" alt="Toyota 86 Coupe" />
             <div class="info">
                 <p><strong>400 DH </strong>/Day <span>📍 Marrakech</span></p>
                 <h3>Rolls-Royce Cullinan</h3>
@@ -101,7 +101,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="g.jpg" alt="Toyota 86 Coupe" />
+            <img src="images/g.jpg" alt="Toyota 86 Coupe" />
             <div class="info">
                 <p><strong>400 DH </strong>/Day <span>📍 Tanger</span></p>
                 <h3>Rolls-Royce Wraith</h3>
@@ -109,7 +109,7 @@ $result = $conn->query($query); // Exécution de la requête
             </div>
         </div>
         <div class="card">
-            <img src="img7.jpg" alt="Lamborghini Huracán" />
+            <img src="images/img7.jpg" alt="Lamborghini Huracán" />
             <div class="info">
                 <p><strong>400 DH </strong>/Day <span>📍 Rabat</span></p>
                 <h3>Lamborghini Huracán</h3>
@@ -137,16 +137,16 @@ $result = $conn->query($query); // Exécution de la requête
             <p><a href="mailto:Auto Rush@Contact.Com" style="color: rgb(177, 39, 39);">Auto Rush@Contact.Com</a></p>
         </div>
         <div class="footer-section map">
-            <img src="Capture.png" alt="Map" style="width: 250px; height: 200px;">
+            <img src="images/Capture.png" alt="Map" style="width: 250px; height: 200px;">
         </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; Auto Rush | Designed by <span>Jihane & Asmae & Hajar</span></p>
         <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-            <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="#"><img src="images/youtube-icon.png" alt="YouTube"></a>
         </div>
     </div>
 </footer>

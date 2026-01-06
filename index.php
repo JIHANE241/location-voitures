@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restau Food</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
@@ -16,7 +16,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="voiture.php" class="active">AllCars</a></li>
                 <li><a href="service.php" class="active">Service</a></li>
-                <li><a href="reservation.php" class="active">Réservation</a></li>
+                <li><a href="reservation.php<?php if(!isset($_SESSION['user_id'])) echo '?redirect=reservation.php'; ?>" class="active">Réservation</a></li>
             </ul>
             <div class="auth-buttons">
                 <?php if (isset($_SESSION['user'])): ?>

@@ -96,7 +96,7 @@ Conduisez sereinement, nous nous occupons du reste.
                 
             </div>
             <div class="image">
-                <img src="img1.jpg" alt="Chef cuisinier">
+                <img src="images/img1.jpg" alt="Chef cuisinier">
             </div>
         </div>
     </div>

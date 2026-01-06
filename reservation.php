@@ -2,40 +2,39 @@
 session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=autorush;charset=utf8', 'root', '');
 
-if (!isset($_SESSION['user'])) {
-    echo "<script>alert('Veuillez vous connecter pour réserver une voiture.'); window.location.href = 'login.php';</script>";
-    exit();
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>
+            alert('Veuillez vous connecter pour réserver une voiture.');
+            window.location.href = 'login.php';
+          </script>";
+    exit(); // arrêter l'exécution du reste du script
 }
 
+// Si l'utilisateur est connecté, on peut traiter le formulaire
 if (isset($_POST['reserver'])) {
-    $nom = htmlspecialchars($_POST['nom']);
     $lieu = htmlspecialchars($_POST['location']);
     $date_debut = $_POST['pickup-date'];
     $date_retour = $_POST['return-date'];
     $voiture = htmlspecialchars($_POST['car-type']);
 
-    // Récupérer id utilisateur
-    $user = $_SESSION['user'];
-    $stmtUser = $bdd->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
-    $stmtUser->execute([$user, $user]);
-    $userData = $stmtUser->fetch();
-
-    if (!$userData) {
-        echo "<script>alert('Utilisateur introuvable.'); window.location.href = 'login.php';</script>";
-        exit();
-    }
-
-    $user_id = $userData['id'];
+    $user_id = $_SESSION['user_id']; // ID du user connecté
 
     $stmt = $bdd->prepare("INSERT INTO reservations (user_id, lieu, date_debut, date_retour, voiture) VALUES (?, ?, ?, ?, ?)");
     $success = $stmt->execute([$user_id, $lieu, $date_debut, $date_retour, $voiture]);
 
     if ($success) {
-        echo "<script>alert('Réservation enregistrée avec succès !'); window.location.href = 'index.php';</script>";
+        echo "<script>
+                alert('Réservation enregistrée avec succès !');
+                window.location.href = 'index.php';
+              </script>";
     } else {
         echo "<script>alert('Erreur lors de la réservation.');</script>";
     }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@ if (isset($_POST['reserver'])) {
 <head>
   <meta charset="UTF-8">
   <title>Réservation de voiture</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="dy">
 <header>
@@ -53,7 +52,7 @@ if (isset($_POST['reserver'])) {
             <li><a href="index.php" class="active">Home</a></li>
             <li><a href="voiture.php" class="active">AllCars</a></li>
             <li><a href="service.php" class="active">Service</a></li>
-            <li><a href="reservation.php" class="active">Réservation</a></li>
+            <li><a href="reservation.php<?php if(!isset($_SESSION['user_id'])) echo '?redirect=reservation.php'; ?>" class="active">Réservation</a></li>
         </ul>
         <div class="auth-buttons">
             <a href="login.php" class="SignIN">Login</a>
@@ -102,11 +101,6 @@ if (isset($_POST['reserver'])) {
     </div>
 </div>
 
-<script>
-  document.getElementById('done').addEventListener('click', function () {
-    alert("The car's booked congratulations !");
-  });
-</script>
 
 </body>
 </html>

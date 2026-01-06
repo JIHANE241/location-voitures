@@ -94,7 +94,7 @@ Avec Auto Rush, vous n’êtes jamais seul sur la route.
                 
             </div>
             <div class="image">
-                <img src="img1.jpg" alt="Chef cuisinier">
+                <img src="images/img1.jpg" alt="Chef cuisinier">
             </div>
         </div>
     </div>
